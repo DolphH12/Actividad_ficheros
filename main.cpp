@@ -5,6 +5,7 @@ using namespace std;
 
 int main()
 {
+    //Este es el primer taller de ficheros
     int clave, opcion, Bclave;
     char nombre[30];
     ofstream Guardar;
