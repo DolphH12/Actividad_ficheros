@@ -1,6 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
+#include <cstdlib>
+#include <stdio.h>
+#include <string.h>
 
 using namespace std;
 
@@ -8,7 +11,7 @@ int main()
 {
     //Este es el primer taller de ficheros
     int clave, opcion, Bclave, Nclave, sueldo;
-    char nombre[30];
+    string nombre;
     ofstream Guardar;
     ifstream Leer;
     ofstream Temp;
@@ -26,26 +29,44 @@ int main()
         switch (opcion) {
             case 1: {
                 cout << "Ingrese un nombre" << endl;
-                cin >> nombre;
+                getline(cin,nombre);
+                getline(cin,nombre);
                 cout << "Ingrese Clave" << endl;
                 cin >> clave;
                 cout << "Ingrese Sueldo" << endl;
                 cin >> sueldo;
-                Guardar << nombre << " " << clave << " " << sueldo << endl;
+                Guardar << nombre << "," << clave << "," << sueldo << endl;
                 system("pause");
                 system("CLS");
                 break;
             }
             case 2: {
                 Leer.open("Fichero.txt");
-                Leer>>nombre;
+                char linea[100];
+                Leer.getline(linea, sizeof(linea));
                 while (!Leer.eof()) {
-                    Leer >> clave >> sueldo;
+                    for(int i=0; i<3;i++){
+                        char *puntero;
+                        if(i==0){
+                            char Bnombre[50];
+                            puntero = strtok(linea, ",");
+                            strcpy(Bnombre, puntero);
+                            nombre = Bnombre;
+                        }
+                        if(i==1){
+                            puntero = strtok(NULL, ",");
+                            clave = atoi(puntero);
+                        }
+                        if(i==2){
+                            puntero = strtok(NULL, ",");
+                            sueldo = atoi(puntero);
+                        }
+                    }
                     cout << "Nombre:  " << nombre << endl;
                     cout << "Clave :  " << clave <<endl;
                     cout << "Sueldo:  " << sueldo <<endl;
                     cout << endl;
-                    Leer >> nombre;
+                    Leer.getline(linea, sizeof(linea));
                 }
                 Leer.close();
                 system("pause");
