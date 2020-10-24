@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
     //Este es el primer taller de ficheros
-    int clave, opcion, Bclave, Nclave;
+    int clave, opcion, Bclave, Nclave, sueldo;
     char nombre[30];
     ofstream Guardar;
     ifstream Leer;
@@ -29,8 +29,10 @@ int main()
                 cin >> nombre;
                 cout << "Ingrese Clave" << endl;
                 cin >> clave;
-                Guardar << nombre << " " << clave << endl;
-                //_sleep(3500);
+                cout << "Ingrese Sueldo" << endl;
+                cin >> sueldo;
+                Guardar << nombre << " " << clave << " " << sueldo << endl;
+                system("pause");
                 system("CLS");
                 break;
             }
@@ -38,14 +40,15 @@ int main()
                 Leer.open("Fichero.txt");
                 Leer>>nombre;
                 while (!Leer.eof()) {
-                    Leer >> clave;
-                    cout << "Nombre: " << nombre << endl;
-                    cout << "Clave:  " << clave <<endl;
+                    Leer >> clave >> sueldo;
+                    cout << "Nombre:  " << nombre << endl;
+                    cout << "Clave :  " << clave <<endl;
+                    cout << "Sueldo:  " << sueldo <<endl;
                     cout << endl;
                     Leer >> nombre;
                 }
                 Leer.close();
-                //_sleep(3500);
+                system("pause");
                 system("CLS");
                 break;
             }
@@ -56,11 +59,12 @@ int main()
                 cout << "Ingrese clave a buscar"<<endl;
                 cin >> Bclave;
                 while (!Leer.eof()) {
-                    Leer >> clave;
+                    Leer >> clave >> sueldo;
                     if(clave == Bclave){
                         encontrado = true;
-                        cout << "Nombre: "<<nombre<<endl;
-                        cout << "Clave:  "<<clave<<endl;
+                        cout << "Nombre:  "<<nombre<<endl;
+                        cout << "Clave :  "<<clave<<endl;
+                        cout << "Sueldo:  "<<sueldo<<endl;
                         cout << endl;
                     }
                     Leer >> nombre;
@@ -69,7 +73,7 @@ int main()
                     cout << "El registro no existe" << endl;
                 }
                 Leer.close();
-                //_sleep(3500);
+                system("pause");
                 system("CLS");
                 break;
 
@@ -82,15 +86,16 @@ int main()
                 cout << "Ingrese clave a eliminar"<<endl;
                 cin >> Bclave;
                 while (!Leer.eof()) {
-                    Leer >> clave;
+                    Leer >> clave >> sueldo;
                     if(clave == Bclave){
                         encontrado = true;
-                        cout << "Nombre: "<<nombre<<endl;
-                        cout << "Clave:  "<<clave<<endl;
+                        cout << "Nombre:  "<<nombre<<endl;
+                        cout << "Clave :  "<<clave<<endl;
+                        cout << "Sueldo:  "<<sueldo<<endl;
                         cout << endl;
                         cout << "Eliminado"<<endl;
                     }else {
-                        Temp << nombre <<" "<<clave<<endl;
+                        Temp << nombre <<" "<<clave<<" "<<sueldo<<endl;
                     }
                     Leer >> nombre;
                 }
@@ -103,7 +108,7 @@ int main()
                 remove("Fichero.txt");
                 rename("Temp.txt", "Fichero.txt");
                 Guardar.open("Fichero.txt",ios::app);
-                //_sleep(3500);
+                system("pause");
                 system("CLS");
                 break;
 
@@ -116,19 +121,20 @@ int main()
                 cout << "Ingrese clave del registro a modificar"<<endl;
                 cin >> Bclave;
                 while (!Leer.eof()) {
-                    Leer >> clave;
+                    Leer >> clave >> sueldo;
                     if(clave == Bclave){
                         encontrado = true;
-                        cout << "Nombre: "<<nombre<<endl;
-                        cout << "Clave:  "<<clave<<endl;
+                        cout << "Nombre:  "<<nombre<<endl;
+                        cout << "Clave :  "<<clave<<endl;
+                        cout << "Sueldo:  "<<sueldo<<endl;
                         cout << endl;
                         cout << "Ingrese nueva Clave"<<endl;
                         cin >> Nclave;
-                        Temp << nombre <<" "<<Nclave<<endl;
+                        Temp << nombre <<" "<<Nclave<<" "<<sueldo<<endl;
                         cout << "MODIFICADO" << endl;
 
                     }else {
-                        Temp << nombre <<" "<<clave<<endl;
+                        Temp << nombre <<" "<<clave<<" "<<sueldo<<endl;
                     }
                     Leer >> nombre;
                 }
@@ -141,7 +147,7 @@ int main()
                 remove("Fichero.txt");
                 rename("Temp.txt", "Fichero.txt");
                 Guardar.open("Fichero.txt",ios::app);
-                //_sleep(3500);
+                system("pause");
                 system("CLS");
                 break;
 
