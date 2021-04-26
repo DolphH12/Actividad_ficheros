@@ -23,13 +23,14 @@ int main()
         cout << "3. Buscar Registro" << endl;
         cout << "4. Eliminar Registro" << endl;
         cout << "5. Modificar Registro" << endl;
+        cout << "6. EXAMPLE" << endl;
         cout << "Ingrese opcion: ";
         cin >> opcion;
 
         switch (opcion) {
             case 1: {
                 cout << "Ingrese un nombre" << endl;
-                getline(cin,nombre);
+                cin.get();
                 getline(cin,nombre);
                 cout << "Ingrese Clave" << endl;
                 cin >> clave;
@@ -173,7 +174,22 @@ int main()
                 break;
 
             }
-        }
+            case 6:
+                string A,B,C;
+                int v;
+                Leer.open("Fichero.txt");
+                Leer>>A;
+                while (!Leer.eof()) {
+                    Leer>>B;
+                    Leer>>C;
+                    cout << "El enrutador: " << A << " Y el enrutador: " << B << " Tienen un valor: " << C << endl;
+                    Leer >> A;
+                }
+                Leer.close();
+                system("PAUSE");
+                system("CLS");
+                break;
+}
 
     }
     return 0;
